@@ -29,5 +29,9 @@ else
 	echo "USING EXISTING BUILDROOT CONFIG"
 	echo "To force update, delete .config or make changes using make menuconfig and build again."
 	make -C buildroot BR2_EXTERNAL=${EXTERNAL_REL_BUILDROOT}
+        #cp ./configure.ac buildroot/output/build/host-util-linux-2.37.4/
+        #cp ./pidfd-utils.h buildroot/output/build/host-util-linux-2.37.4/include
+        #make -C buildroot BR2_EXTERNAL=${EXTERNAL_REL_BUILDROOT}
+
 
 fi
