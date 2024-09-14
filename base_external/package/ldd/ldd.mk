@@ -19,7 +19,7 @@ define LDD_BUILD_CMDS
 endef
 
 define LDD_INSTALL_TARGET_CMDS
-    $(INSTALL) -d 0755 $(TARGET_DIR)/lib/modules/$(LINUX_VERSION)
+    $(INSTALL) -d 0755 $(TARGET_DIR)/lib/modules/$(BR2_LINUX_KERNEL_CUSTOM_VERSION_VALUE)
     $(INSTALL) -m 0755 $(@D)/scull/scull.ko $(TARGET_DIR)/lib/modules/$(BR2_LINUX_KERNEL_CUSTOM_VERSION_VALUE)
     $(INSTALL) -m 0755 $(@D)/misc-modules/faulty.ko $(TARGET_DIR)/lib/modules/$(BR2_LINUX_KERNEL_CUSTOM_VERSION_VALUE)
     $(INSTALL) -m 0755 $(@D)/misc-modules/hello.ko $(TARGET_DIR)/lib/modules/$(BR2_LINUX_KERNEL_CUSTOM_VERSION_VALUE)
