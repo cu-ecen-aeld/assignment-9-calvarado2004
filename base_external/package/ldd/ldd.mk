@@ -14,8 +14,8 @@ LDD_MODULE_SUBDIRS = scull
 LDD_MODULE_SUBDIRS += misc-modules
 
 define LDD_BUILD_CMDS
-    $(MAKE) CC="$(TARGET_CC)" ARCH=arm64 CROSS_COMPILE=$(TARGET_CROSS) -C $(LINUX_DIR) M=$(@D)/scull modules
-    $(MAKE) CC="$(TARGET_CC)" ARCH=arm64 CROSS_COMPILE=$(TARGET_CROSS) -C $(LINUX_DIR) M=$(@D)/misc-modules modules
+    $(MAKE) CC="$(TARGET_CC)" ARCH=arm64 CROSS_COMPILE=$(TARGET_CROSS) CFLAGS_MODULE="-I$(@D)/include" -C $(LINUX_DIR) M=$(@D)/scull modules
+    $(MAKE) CC="$(TARGET_CC)" ARCH=arm64 CROSS_COMPILE=$(TARGET_CROSS) CFLAGS_MODULE="-I$(@D)/include" -C $(LINUX_DIR) M=$(@D)/misc-modules modules
 endef
 
 define LDD_INSTALL_TARGET_CMDS
