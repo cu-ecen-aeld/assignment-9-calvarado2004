@@ -3,3 +3,16 @@ config BR2_PACKAGE_AESD_ASSIGNMENTS
 	help
 	  Includes the writer executable, finder.sh and tester.sh in the kernel image.
 	  Used to understand buildroot external trees and package builds.
+
+config BR2_PACKAGE_LDD
+	bool "ldd"
+	help
+	  Adds support for building and installing the misc-modules and scull components into the root filesystem.
+	  Also includes init scripts to load and unload these modules on startup and shutdown.
+
+config BR2_ROOTFS_OVERLAY
+	string "Root filesystem overlay"
+	default "../base_external/rootfs_overlay"
+	help
+	  Specify the path to the root filesystem overlay that should be applied
+	  to the target filesystem.
