@@ -23,8 +23,6 @@ define LDD_INSTALL_TARGET_CMDS
     $(INSTALL) -m 0755 $(@D)/scull/scull.ko $(TARGET_DIR)/lib/modules/$(BR2_LINUX_KERNEL_CUSTOM_VERSION_VALUE)
     $(INSTALL) -m 0755 $(@D)/misc-modules/faulty.ko $(TARGET_DIR)/lib/modules/$(BR2_LINUX_KERNEL_CUSTOM_VERSION_VALUE)
     $(INSTALL) -m 0755 $(@D)/misc-modules/hello.ko $(TARGET_DIR)/lib/modules/$(BR2_LINUX_KERNEL_CUSTOM_VERSION_VALUE)
-    PATH=$(TARGET_DIR)/sbin:$(TARGET_DIR)/bin depmod -a -b $(TARGET_DIR) $(BR2_LINUX_KERNEL_CUSTOM_VERSION_VALUE)
-
 endef
 
 $(eval $(kernel-module))
