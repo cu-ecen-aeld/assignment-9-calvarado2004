@@ -80,7 +80,7 @@ case "$1" in
         fi
 
         echo "Loading hello module"
-        insmod /lib/modules/5.15.163/hello.ko $* || exit 1
+        insmod /lib/modules/5.15.163/hello.ko
 
         ;;
     stop)
