@@ -16,7 +16,7 @@ case "$1" in
         # invoke insmod with all arguments we got
         # and use a pathname, as insmod doesn't look in . by default
         echo "Loading scull module"
-        modprobe scull $* || exit 1
+        modprobe /lib/modules/5.15.163/scull.ko $* || exit 1
 
         # retrieve major number
         major=$(awk "\$2==\"$module\" {print \$1}" /proc/devices)
@@ -63,7 +63,7 @@ case "$1" in
         chmod $mode  /dev/${device}priv
 
         echo "Loading faulty module"
-        modprobe faulty $* || exit 1
+        modprobe /lib/modules/5.15.163/faulty.ko $* || exit 1
         major=$(awk "\$2==\"faulty\" {print \$1}" /proc/devices)
 
         if [ ! -z ${major} ]; then
@@ -80,7 +80,7 @@ case "$1" in
         fi
 
         echo "Loading hello module"
-        modprobe hello
+        modprobe /lib/modules/5.15.163/hello.ko $* || exit 1
 
         ;;
     stop)
