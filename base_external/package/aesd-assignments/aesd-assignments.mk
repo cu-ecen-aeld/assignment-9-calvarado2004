@@ -4,7 +4,7 @@
 #
 ##############################################################
 
-AESD_ASSIGNMENTS_VERSION = eed0a56
+AESD_ASSIGNMENTS_VERSION = 0e5c533
 # Note: Be sure to reference the *ssh* repository URL here (not https) to work properly
 # with ssh keys and the automated build/test system.
 # Your site should start with git@github.com:
@@ -15,7 +15,7 @@ AESD_ASSIGNMENTS_GIT_SUBMODULES = YES
 define AESD_ASSIGNMENTS_BUILD_CMDS
     $(MAKE) CC="$(TARGET_CC)" -C $(@D)/finder-app all
     $(MAKE) CC="$(TARGET_CC)" -C $(@D)/server all
-
+    $(MAKE) CC="$(TARGET_CC)" -C $(@D)/aed-char-driver modules
 endef
 
 # Install commands to place files in the target filesystem
@@ -29,7 +29,8 @@ define AESD_ASSIGNMENTS_INSTALL_TARGET_CMDS
     $(INSTALL) -D -m 755 $(@D)/finder-app/writer $(TARGET_DIR)/usr/bin/writer
     $(INSTALL) -D -m 755 $(@D)/server/aesdsocket $(TARGET_DIR)/usr/bin/aesdsocket
     $(INSTALL) -D -m 755 $(@D)/server/aesdsocket-start-stop $(TARGET_DIR)/etc/init.d/S99aesdsocket
+    $(INSTALL) -m 0755 $(@D)/aed-char-driver/aesdchar.ko $(TARGET_DIR)/lib/modules/$(BR2_LINUX_KERNEL_CUSTOM_VERSION_VALUE)
 endef
 
+$(eval $(kernel-module))
 $(eval $(generic-package))
-
