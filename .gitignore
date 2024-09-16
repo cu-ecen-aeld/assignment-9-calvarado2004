@@ -1,4 +1,6 @@
 *.o
 build/
 .vscode/
+.idea/
+.buildroot/
 *.log
