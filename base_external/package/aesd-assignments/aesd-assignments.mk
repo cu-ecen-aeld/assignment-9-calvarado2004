@@ -15,7 +15,7 @@ AESD_ASSIGNMENTS_GIT_SUBMODULES = YES
 define AESD_ASSIGNMENTS_BUILD_CMDS
     $(MAKE) CC="$(TARGET_CC)" -C $(@D)/finder-app all
     $(MAKE) CC="$(TARGET_CC)" -C $(@D)/server all
-    $(MAKE) CC="$(TARGET_CC)" -C $(@D)/aed-char-driver modules
+    $(MAKE) CC="$(TARGET_CC)" ARCH=arm64 CROSS_COMPILE=$(TARGET_CROSS) -C $(LINUX_DIR) M=$(@D)/aesd-char-driver modules
 endef
 
 # Install commands to place files in the target filesystem
@@ -29,7 +29,7 @@ define AESD_ASSIGNMENTS_INSTALL_TARGET_CMDS
     $(INSTALL) -D -m 755 $(@D)/finder-app/writer $(TARGET_DIR)/usr/bin/writer
     $(INSTALL) -D -m 755 $(@D)/server/aesdsocket $(TARGET_DIR)/usr/bin/aesdsocket
     $(INSTALL) -D -m 755 $(@D)/server/aesdsocket-start-stop $(TARGET_DIR)/etc/init.d/S99aesdsocket
-    $(INSTALL) -m 0755 $(@D)/aed-char-driver/aesdchar.ko $(TARGET_DIR)/lib/modules/$(BR2_LINUX_KERNEL_CUSTOM_VERSION_VALUE)
+    $(INSTALL) -m 0755 $(@D)/aesd-char-driver/aesdchar.ko $(TARGET_DIR)/lib/modules/$(BR2_LINUX_KERNEL_CUSTOM_VERSION_VALUE)
 endef
 
 $(eval $(kernel-module))
