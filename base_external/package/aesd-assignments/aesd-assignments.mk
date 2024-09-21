@@ -34,5 +34,4 @@ define AESD_ASSIGNMENTS_INSTALL_TARGET_CMDS
     $(INSTALL) -D -m 755 $(@D)/aesd-char-driver/aesdchar_unload $(TARGET_DIR)/usr/bin/aesdchar_unload
 endef
 
-$(eval $(kernel-module))
 $(eval $(generic-package))
