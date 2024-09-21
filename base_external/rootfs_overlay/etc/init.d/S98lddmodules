@@ -13,6 +13,10 @@ case "$1" in
             group="wheel"
         fi
 
+        echo "Loading aesdchar module"
+        insmod /lib/modules/5.15.163/aesdchar.ko $* || exit 1
+
+
         # invoke insmod with all arguments we got
         # and use a pathname, as insmod doesn't look in . by default
         echo "Loading scull module"
@@ -105,6 +109,10 @@ case "$1" in
         echo "Unloading hello module"
         rmmod hello
         rm -f /dev/hello
+
+        echo "Uloading aesdchar module"
+        rmmod aesdchar || exit 1
+
         ;;
     *)
         echo "Usage: $0 {start|stop}"
