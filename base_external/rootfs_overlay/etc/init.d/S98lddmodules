@@ -16,6 +16,8 @@ case "$1" in
         echo "Loading aesdchar module"
         insmod /lib/modules/5.15.163/aesdchar.ko $* || exit 1
 
+        echo "Executing aesdchar_load"
+        /usr/bin/aesdchar_load
 
         # invoke insmod with all arguments we got
         # and use a pathname, as insmod doesn't look in . by default
@@ -111,7 +113,7 @@ case "$1" in
         rm -f /dev/hello
 
         echo "Uloading aesdchar module"
-        rmmod aesdchar || exit 1
+        /usr/bin/aesdchar_unload
 
         ;;
     *)
