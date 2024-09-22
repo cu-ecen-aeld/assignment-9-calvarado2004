@@ -112,7 +112,7 @@ case "$1" in
         rmmod hello
         rm -f /dev/hello
 
-        echo "Uloading aesdchar module"
+        echo "Unloading aesdchar module"
         /usr/bin/aesdchar_unload
 
         ;;
